@@ -19,11 +19,11 @@
       </ImageView>
    </center>
    <bottom>
-      <VBox prefHeight="64.0" prefWidth="414.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="64.0" prefWidth="414.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="start_GPA_Calculator" mnemonicParsing="false" onAction="#start_GPA_Calculation" prefHeight="40.0" prefWidth="414.0" style="-fx-background-color: yellow;" text="Start GPA Calculation" textFill="#100000">
+            <Button fx:id="start_GPA_Calculator" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#start_GPA_Calculation" prefHeight="40.0" prefWidth="414.0" style="-fx-background-color: yellow;" text="Start GPA Calculation" textFill="#100000">
                <VBox.margin>
-                  <Insets left="120.0" right="120.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </Button>
          </children>
