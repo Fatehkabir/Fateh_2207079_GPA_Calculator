@@ -23,6 +23,8 @@ public class courseEntryController {
     private ComboBox<String> grade;
 @FXML
     private Button add_courses;
+@FXML
+    private Button calculate;
 
 private ObservableList<course>courseList= FXCollections.observableArrayList();
 
@@ -81,13 +83,17 @@ public void addCourses(ActionEvent event) {
         grade.setValue(null);
 
     } catch(NumberFormatException e){
-        System.out.println("Invalid number added");
+        System.out.println("Invalid data added");
     }
 
 }
 
 public ObservableList<course> getCourseList() {
     return courseList;
+}
+
+public void calculateGPA(ActionEvent event) {
+
 }
 
 

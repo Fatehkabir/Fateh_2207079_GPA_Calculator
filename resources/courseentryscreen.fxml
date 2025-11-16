@@ -24,10 +24,10 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <HBox prefHeight="50.0" prefWidth="910.0" style="-fx-background-color: green;">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="910.0" style="-fx-background-color: green;" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox prefHeight="50.0" prefWidth="318.0" style="-fx-background-color: red;" />
-                  <HBox prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: yellow;" />
+                  <HBox prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: red;" />
+                  <HBox prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: yellow;" />
                </children>
             </HBox>
          </children>
@@ -40,6 +40,14 @@
                <children>
                   <HBox alignment="BOTTOM_RIGHT" prefHeight="48.0" prefWidth="910.0">
                      <children>
+                        <Button fx:id="calculate" mnemonicParsing="false" onAction="#calculateGPA" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: Green;" text="Calculate" textFill="WHITE" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                         <Button fx:id="add_courses" mnemonicParsing="false" onAction="#addCourses" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: #6A5ACD;" text="Add courses" textFill="WHITE">
                            <HBox.margin>
                               <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
