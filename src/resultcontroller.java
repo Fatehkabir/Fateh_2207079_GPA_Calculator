@@ -15,6 +15,10 @@ public class resultcontroller {
     @FXML
     private TableColumn<course,Double>creditCol;
     @FXML
+    private TableColumn<course,String>teacher1NameCol;
+    @FXML
+    private TableColumn<course,String>teacher2NameCol;
+    @FXML
     private TableColumn<course,String>gradeCol;
 
 
@@ -25,6 +29,8 @@ public class resultcontroller {
         courseCodeCol.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
         creditCol.setCellValueFactory(new PropertyValueFactory<>("creditValue"));
         gradeCol.setCellValueFactory(new PropertyValueFactory<>("gradeValue"));
+        teacher1NameCol.setCellValueFactory(new PropertyValueFactory<>("teacher1Name"));
+        teacher2NameCol.setCellValueFactory(new PropertyValueFactory<>("teacher2Name"));
 
         courseTable.setItems(courses);
 

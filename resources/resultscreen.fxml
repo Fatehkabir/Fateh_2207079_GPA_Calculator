@@ -30,6 +30,8 @@
                       <TableColumn fx:id="courseCodeCol" prefWidth="75.0" text="Course code" />
                         <TableColumn fx:id="courseNameCol" prefWidth="75.0" text="course name" />
                         <TableColumn fx:id="creditCol" prefWidth="75.0" text="course credit" />
+                        <TableColumn fx:id="teacher1NameCol" prefWidth="75.0" text="Teacher's name" />
+                        <TableColumn fx:id="teacher2NameCol" prefWidth="75.0" text="Teacher's name" />
                         <TableColumn fx:id="gradeCol" prefWidth="75.0" text="obtained GPA" />
                     </columns>
                      <columnResizePolicy>
