@@ -54,7 +54,7 @@ private TableColumn<course,String>gradeCol;
 
 @FXML
 public void initialize(){
-    grade.getItems().addAll("A+","A","A-","B+","B","B-","C+","C","C-","D","F");
+    grade.getItems().addAll("A+","A","A-","B+","B","B-","C+","C","D","F");
     courseNameCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
     courseCodeCol.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
     teacher1NameCol.setCellValueFactory(new PropertyValueFactory<>("teacher1Name"));
@@ -108,7 +108,6 @@ public void calculateGPA(ActionEvent event) throws IOException {
     Parent root= loader.load();
     resultcontroller resultcontrol=loader.getController();
     resultcontrol.setCourseList(courseList);
-
     Stage stage=(Stage)((Button)event.getSource()).getScene().getWindow();
     stage.setScene(new Scene(root));
     stage.show();

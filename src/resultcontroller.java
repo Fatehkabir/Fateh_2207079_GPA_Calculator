@@ -1,6 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,9 +21,11 @@ public class resultcontroller {
     private TableColumn<course,String>teacher2NameCol;
     @FXML
     private TableColumn<course,String>gradeCol;
+    @FXML
+    private Label resultshow;
 
-
-
+    resultcalculate result = new resultcalculate();
+    double answer=0.0;
     @FXML
     public void setCourseList(ObservableList<course>courses){
         courseNameCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -33,7 +36,11 @@ public class resultcontroller {
         teacher2NameCol.setCellValueFactory(new PropertyValueFactory<>("teacher2Name"));
 
         courseTable.setItems(courses);
-
+        answer=result.calculateCGPA(courses);
+        resultshow.setText(String.valueOf(answer));
     }
+
+
+
 
 }
