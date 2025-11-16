@@ -25,6 +25,8 @@ public class courseEntryController {
     private Button add_courses;
 @FXML
     private Button calculate;
+@FXML
+    private Label updateLabel;
 
 private ObservableList<course>courseList= FXCollections.observableArrayList();
 
@@ -70,6 +72,7 @@ public void addCourses(ActionEvent event) {
 
         if (courseName.isEmpty() || courseCode == 0 || teacher1Name.isEmpty() || teacher2Name.isEmpty() || creditValue == 0 || gradeValue.isEmpty()) {
             System.out.println("Please fill all the fields");
+            updateLabel.setText("Please fill all the fields");
             return;
         }
 
@@ -81,9 +84,11 @@ public void addCourses(ActionEvent event) {
         teacher2_name.clear();
         credit.clear();
         grade.setValue(null);
+        updateLabel.setText("Course been added");
 
     } catch(NumberFormatException e){
         System.out.println("Invalid data added");
+        updateLabel.setText("Invalid data added");
     }
 
 }
