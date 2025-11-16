@@ -3,9 +3,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 
 public class courseEntryController {
@@ -97,7 +102,16 @@ public ObservableList<course> getCourseList() {
     return courseList;
 }
 
-public void calculateGPA(ActionEvent event) {
+public void calculateGPA(ActionEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("resultscreen.fxml"));
+    Parent root= loader.load();
+    resultcontroller resultcontrol=loader.getController();
+    resultcontrol.setCourseList(courseList);
+
+    Stage stage=(Stage)((Button)event.getSource()).getScene().getWindow();
+    stage.setScene(new Scene(root));
+    stage.show();
 
 }
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="resultcontroller">
+   <top>
+      <VBox prefHeight="72.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="87.0" prefWidth="926.0" text="Your GPA">
+               <font>
+                  <Font name="Georgia Bold Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox prefHeight="339.0" prefWidth="910.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="354.0" prefWidth="910.0">
+               <children>
+                  <TableView fx:id="courseTable" prefHeight="358.0" prefWidth="910.0">
+                    <columns>
+                      <TableColumn fx:id="courseCodeCol" prefWidth="75.0" text="Course code" />
+                        <TableColumn fx:id="courseNameCol" prefWidth="75.0" text="course name" />
+                        <TableColumn fx:id="creditCol" prefWidth="75.0" text="course credit" />
+                        <TableColumn fx:id="gradeCol" prefWidth="75.0" text="obtained GPA" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
