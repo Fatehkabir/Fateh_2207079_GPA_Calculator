@@ -37,7 +37,7 @@ public class resultcontroller {
 
         courseTable.setItems(courses);
         answer=result.calculateCGPA(courses);
-        resultshow.setText(String.valueOf(answer));
+        resultshow.setText("Total CGPA: "+String.valueOf(answer));
     }
 
 
