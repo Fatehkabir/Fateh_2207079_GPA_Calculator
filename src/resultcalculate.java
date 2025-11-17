@@ -32,7 +32,7 @@ public class resultcalculate {
         }
 
         if(totalCredits==0) return 0.0;
-        return totalPoints/totalCredits;
+        return totalCredits==0.0 ? 0.0:totalPoints/totalCredits;
     }
 
 }

@@ -109,7 +109,9 @@ public void calculateGPA(ActionEvent event) throws IOException {
     resultcontroller resultcontrol=loader.getController();
     resultcontrol.setCourseList(courseList);
     Stage stage=(Stage)((Button)event.getSource()).getScene().getWindow();
-    stage.setScene(new Scene(root));
+    Scene scene=new Scene(root);
+    scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+    stage.setScene(scene);
     stage.show();
 
 }
