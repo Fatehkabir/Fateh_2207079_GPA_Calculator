@@ -1,8 +1,8 @@
 #CGPA_Label {
     -fx-background-image: url("images.jpeg");
-    -fx-background-size: cover; /* scales the image to cover the label */
+    -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
-    -fx-background-position: center center; /* centers the image */
+    -fx-background-position: center center;
     -fx-padding: 20;
     -fx-text-fill: white;
     -fx-font-size: 20px;
@@ -13,7 +13,7 @@
     -fx-background-image: url("image2.jpg");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
-    -fx-background-position: center center; /* centers the image */
+    -fx-background-position: center center;
     -fx-padding: 20;
     -fx-text-fill: black;
     -fx-font-size: 20px;
