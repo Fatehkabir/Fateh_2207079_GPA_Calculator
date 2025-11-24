@@ -1,60 +1,85 @@
 import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DatabaseHelper {
+    private static final String DB_URL = "jdbc:sqlite:courses.db";
 
-    private static final String URL = "jdbc:sqlite:sample.db";
-
-    public static Connection connect() {
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(URL);
-            System.out.println("Connected to SQLite!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return conn;
-    }
-
-    public static void createTable() {
-        String sql = """
-            CREATE TABLE IF NOT EXISTS courses (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                course_name TEXT,
-                course_code TEXT,
-                course_credit REAL,
-                grade REAL,
-                teacher1 TEXT,
-                teacher2 TEXT
-            )
-        """;
-
-        try (Connection conn = connect();
+    public static void initDatabase() {
+        try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-            System.out.println("Table created!");
-        } catch (Exception e) {
+            stmt.execute("CREATE TABLE IF NOT EXISTS courses (" +
+                    "courseCode INTEGER PRIMARY KEY," +
+                    "courseName TEXT NOT NULL," +
+                    "teacher1Name TEXT," +
+                    "teacher2Name TEXT," +
+                    "creditValue REAL," +
+                    "gradeValue TEXT)");
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public static void insertCourse(course c) {
-        String sql = "INSERT INTO courses(course_name, course_code, course_credit, grade, teacher1, teacher2) VALUES (?, ?, ?, ?, ?, ?)";
-
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, c.getCourseName());
-            pstmt.setString(2, c.getCourseCode());
-            pstmt.setDouble(3, c.getCourseCredit());
-            pstmt.setDouble(4, c.getgradepoint());
-            pstmt.setString(5, c.getteacher1name());
-            pstmt.setString(6, c.getteacher2name());
-
-            pstmt.executeUpdate();
-            System.out.println("Data inserted successfully!");
-
-        } catch (Exception e) {
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement ps = conn.prepareStatement(
+                     "INSERT INTO courses(courseCode, courseName, teacher1Name, teacher2Name, creditValue, gradeValue) VALUES(?,?,?,?,?,?)")) {
+            ps.setInt(1, c.getCourseCode());
+            ps.setString(2, c.getCourseName());
+            ps.setString(3, c.getTeacher1Name());
+            ps.setString(4, c.getTeacher2Name());
+            ps.setDouble(5, c.getCreditValue());
+            ps.setString(6, c.getGradeValue());
+            ps.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void updateCourse(course c) {
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement ps = conn.prepareStatement(
+                     "UPDATE courses SET courseName=?, teacher1Name=?, teacher2Name=?, creditValue=?, gradeValue=? WHERE courseCode=?")) {
+            ps.setString(1, c.getCourseName());
+            ps.setString(2, c.getTeacher1Name());
+            ps.setString(3, c.getTeacher2Name());
+            ps.setDouble(4, c.getCreditValue());
+            ps.setString(5, c.getGradeValue());
+            ps.setInt(6, c.getCourseCode());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteCourse(int courseCode) {
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement ps = conn.prepareStatement("DELETE FROM courses WHERE courseCode=?")) {
+            ps.setInt(1, courseCode);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ObservableList<course> getAllCourses() {
+        ObservableList<course> list = FXCollections.observableArrayList();
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM courses")) {
+            while (rs.next()) {
+                list.add(new course(
+                        rs.getString("courseName"),
+                        rs.getInt("courseCode"),
+                        rs.getString("teacher1Name"),
+                        rs.getString("teacher2Name"),
+                        rs.getDouble("creditValue"),
+                        rs.getString("gradeValue")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

@@ -14,7 +14,7 @@ public class controller {
     private Button start_GPA_Calculator;
 
     public void start_GPA_Calculation(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("courseentryscreen.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("courseentryscreen2.fxml"));
         Parent root=loader.load();
         Stage stage=(Stage)((Button)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
