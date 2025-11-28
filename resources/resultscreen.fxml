@@ -1,50 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="resultcontroller">
-   <top>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
-         <children>
-            <Label id="CGPA_Label" alignment="CENTER" text="Your GPA"  maxWidth="Infinity" maxHeight="Infinity" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="Georgia Bold Italic" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <VBox prefHeight="339.0" prefWidth="910.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="354.0" prefWidth="910.0">
-               <children>
-                  <TableView fx:id="courseTable" prefHeight="358.0" prefWidth="910.0">
-                    <columns>
-                      <TableColumn fx:id="courseCodeCol" prefWidth="75.0" text="Course code" />
-                        <TableColumn fx:id="courseNameCol" prefWidth="75.0" text="course name" />
-                        <TableColumn fx:id="creditCol" prefWidth="75.0" text="course credit" />
-                        <TableColumn fx:id="teacher1NameCol" prefWidth="75.0" text="Teacher's name" />
-                        <TableColumn fx:id="teacher2NameCol" prefWidth="75.0" text="Teacher's name" />
-                        <TableColumn fx:id="gradeCol" prefWidth="75.0" text="obtained GPA" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </children>
+
+    <!-- Top Section -->
+    <top>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
+            <children>
+                <Label id="CGPA_Label" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" text="Your GPA" VBox.vgrow="ALWAYS">
+                    <font>
+                        <Font name="Georgia Bold Italic" size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- Center Section with SplitPane -->
+    <center>
+        <SplitPane dividerPositions="0.3" orientation="HORIZONTAL" prefHeight="600.0" prefWidth="910.0">
+
+            <!-- LEFT SIDE: VBox with TextFields + Button + Table -->
+            <VBox prefHeight="600.0" prefWidth="250.0" spacing="5.0">
+                <children>
+
+                    <!-- Roll Number Input -->
+                    <TextField fx:id="rollField" promptText="Enter Roll Number" />
+
+                    <!-- Student Name Input -->
+                    <TextField fx:id="nameField" promptText="Enter Student Name" />
+
+                    <!-- SAVE BUTTON -->
+                    <Button fx:id="saveButton" onAction="#handleSaveStudent" style="-fx-background-color: yellow;" text="Save Student" />
+
+                    <!-- Student Table -->
+                    <TableView fx:id="studentTable" prefHeight="500.0" prefWidth="270.0">
+                        <columns>
+                            <TableColumn fx:id="rollCol" prefWidth="75.0" text="Roll" />
+                            <TableColumn fx:id="nameCol" prefWidth="120.0" text="Name" />
+                            <TableColumn fx:id="gpaCol" prefWidth="50.0" text="GPA" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+
+                </children>
             </VBox>
-            <Label id="Show_Label" fx:id="resultshow" alignment="CENTER" text="Label" maxWidth="Infinity" maxHeight="Infinity" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </center>
+
+            <!-- RIGHT SIDE: Table + CGPA Label -->
+            <VBox prefHeight="600.0" prefWidth="660.0">
+                <children>
+
+                    <!-- Main Table -->
+                    <TableView fx:id="courseTable" prefHeight="400.0" prefWidth="660.0">
+                        <columns>
+                            <TableColumn fx:id="courseCodeCol" prefWidth="75.0" text="Course code" />
+                            <TableColumn fx:id="courseNameCol" prefWidth="75.0" text="course name" />
+                            <TableColumn fx:id="creditCol" prefWidth="75.0" text="course credit" />
+                            <TableColumn fx:id="teacher1NameCol" prefWidth="75.0" text="Teacher's name" />
+                            <TableColumn fx:id="teacher2NameCol" prefWidth="75.0" text="Teacher's name" />
+                            <TableColumn fx:id="gradeCol" prefWidth="75.0" text="obtained GPA" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+
+                    <!-- CGPA Label BELOW -->
+                    <Label id="Show_Label" fx:id="resultshow" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" text="Label" VBox.vgrow="ALWAYS">
+                        <font>
+                            <Font size="50.0" />
+                        </font>
+                    </Label>
+
+                </children>
+            </VBox>
+
+        </SplitPane>
+    </center>
+
 </BorderPane>
